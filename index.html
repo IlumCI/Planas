@@ -86,5 +86,33 @@
       </table>
     </section>
   </main>
+
+ <script>
+    // Set a cookie
+    function setCookie(name, value, days) {
+      const expires = new Date();
+      expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+      document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+    }
+
+    // Get a cookie
+    function getCookie(name) {
+      const cookieName = `${name}=`;
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim();
+        if (cookie.startsWith(cookieName)) {
+          return cookie.substring(cookieName.length, cookie.length);
+        }
+      }
+      return '';
+    }
+
+    // Example usage:
+    setCookie('exampleCookie', 'Noriu tavo sausainiu!', 7); // Set a cookie that expires in 7 days
+    const retrievedCookie = getCookie('exampleCookie');
+    console.log(retrievedCookie); // Log the retrieved cookie value
+  </script>
+  
 </body>
 </html>
